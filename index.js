@@ -52,7 +52,7 @@ app.use("/api/post", postRoutes); // paso a -> post.routes.js que tiene la lógi
 app.use("/api/comment", commentRoutes); // paso a -> comment.routes.js que tiene la lógica de negocio de comment
 
 //puerto en el que va a correr el server, si no hay una variable de entorno PORT, va a correr en el puerto 3000
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 //Le decimos al server que escuche en el puerto
 app.listen(port, () => {
