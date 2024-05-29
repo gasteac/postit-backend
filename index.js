@@ -16,6 +16,7 @@ import cookieParser from "cookie-parser";
 import path from "path";
 //esto va a setear las variables del .env en process.env osea en el entorno
 dotenv.config(); 
+import cors from "cors";
 // importamos las rutas de user, auth, post y comment
 import userRoutes from "./routes/user.routes.js";
 import authRoutes from "./routes/auth.routes.js";
@@ -29,10 +30,13 @@ mongoose
   .catch((err) => console.log(err));
 
 //esto es para que __dirname funcione en los módulos de ES6 (porque __dirname no existe en ES6)
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 
 //Creamos una instancia de express que va a ser nuestro server y la guardamos con el nombre app
 const app = express();
+
+// middleware que permite que el server acepte peticiones de cualquier origen
+app.use(cors());
 
 //middleware que permite parsear JSON del backend a lenguaje usable (string) y manipulable (objeto u string) en el frontend
 //sino, el front no podría interpretar la resp del backend porque vendría en formato JSON
