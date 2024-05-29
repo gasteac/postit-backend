@@ -216,7 +216,7 @@ export const google = async (req, res, next) => {
       res
         .status(200)
         .cookie("access_token", token, {
-          httpOnly: true,  secure: true, // Asegúrate de que tu servidor esté usando HTTPS
+          httpOnly: true,  secure: true, Secure, // Asegúrate de que tu servidor esté usando HTTPS
           sameSite: "None" })
         .json(rest);
     }
