@@ -36,7 +36,7 @@ mongoose
 const app = express();
 
 // middleware que permite que el server acepte peticiones de cualquier origen
-app.use(cors({ origin: 'https://postit-frontend-bice.vercel.app', credentials: true }));
+app.use(cors({ origin: 'https://postit-frontend-bice.vercel.app/', credentials: true }));
 
 //middleware que permite parsear JSON del backend a lenguaje usable (string) y manipulable (objeto u string) en el frontend
 //sino, el front no podría interpretar la resp del backend porque vendría en formato JSON
