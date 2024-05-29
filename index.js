@@ -37,7 +37,7 @@ const app = express();
 
 // middleware que permite que el server acepte peticiones solo del front
 app.use(cors({
-  origin: 'https://postit-frontend-bice.vercel.app',
+  origin: 'https://postit-gasteac.vercel.app',
   credentials: true
 }));
 
