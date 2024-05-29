@@ -6,6 +6,7 @@ import bcryptjs from "bcryptjs";
 import { errorHandler } from "../utils/error.js";
 //Traigo jwt para generar el token de usuario
 import jwt from "jsonwebtoken";
+import { trusted } from "mongoose";
 
 //creo un controlador para signup, que recibe req, res y next (next se usa para ejecutar el siguiente middleware)
 //este middleware puede ser un manejador de errores, o el siguiente middleware que se va a ejecutar
@@ -81,6 +82,8 @@ export const signup = async (req, res, next) => {
       .cookie("access_token", token, {
         //httpOnly es para que el token no se pueda acceder desde el frontend, solo desde el backend
         httpOnly: true,
+        secure: true, // Asegúrate de que tu servidor esté usando HTTPS
+        sameSite: "None"
       })
       //le devuelvo al frontend un json con el usuario que creé en la bdd sin la contraseña
       .json(rest);
@@ -141,6 +144,8 @@ export const signin = async (req, res, next) => {
         //mediante el protocolo http, osea desde el servidor, no desde el cliente
         //esto proporciona una capa de seguridad extra
         httpOnly: true,
+        secure: true, // Asegúrate de que tu servidor esté usando HTTPS
+        sameSite: "None"
       })
       //le devuelvo al frontend el usuario que encontré en la bdd sin la contraseña y el token (recién ahi el cliente puede tener el token)
       //este rest es un objeto con los datos del usuario
@@ -175,6 +180,8 @@ export const google = async (req, res, next) => {
         .status(200)
         .cookie("access_token", token, {
           httpOnly: true,
+          secure: true, // Asegúrate de que tu servidor esté usando HTTPS
+          sameSite: "None"
         })
         //este rest es un objeto con los datos del usuario
         .json(rest);
@@ -208,7 +215,9 @@ export const google = async (req, res, next) => {
       //le devuelvo al frontend el usuario que encontré en la bdd sin la contraseña, y el token
       res
         .status(200)
-        .cookie("access_token", token, { httpOnly: true })
+        .cookie("access_token", token, {
+          httpOnly: true,  secure: true, // Asegúrate de que tu servidor esté usando HTTPS
+          sameSite: "None" })
         .json(rest);
     }
   } catch (error) {
