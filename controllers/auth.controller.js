@@ -145,7 +145,7 @@ export const signin = async (req, res, next) => {
         //esto proporciona una capa de seguridad extra
         httpOnly: true,
         secure: true, // Asegúrate de que tu servidor esté usando HTTPS
-        sameSite: "None"
+        sameSite: "None",
       })
       //le devuelvo al frontend el usuario que encontré en la bdd sin la contraseña y el token (recién ahi el cliente puede tener el token)
       //este rest es un objeto con los datos del usuario
@@ -216,7 +216,8 @@ export const google = async (req, res, next) => {
       res
         .status(200)
         .cookie("access_token", token, {
-          httpOnly: true,  secure: true, Secure, // Asegúrate de que tu servidor esté usando HTTPS
+          httpOnly: true,  
+          secure: true, // Asegúrate de que tu servidor esté usando HTTPS
           sameSite: "None" })
         .json(rest);
     }
