@@ -102,7 +102,7 @@ export const getUsers = async (req, res, next) => {
     //
     // parseInt convierte el string a número, todo lo que llega de una petición http es un string
     const startIndex = parseInt(req.query.startIndex) || 0;
-    const limit = parseInt(req.query.limit) || 4;
+    const limit = parseInt(req.query.limit) || 16;
     // 1 y -1 son los valores que se le pasan al método sort para indicar el orden, si es 1, se ordena de forma ascendente, si es -1, de forma descendente
     const sortDirection = req.query.sort == "asc" ? 1 : -1;
 

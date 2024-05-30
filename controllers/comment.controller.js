@@ -46,7 +46,6 @@ export const likeComment = async (req, res, next) => {
     if (!comment) {
       return next(errorHandler(404, "Comment not found"));
     }
-
     // si existe, buscamos si el usuario ya le dio like al comentario
     // buscamos en el arreglo likes de comment, si existe un id del usuario que esta dando like ahora
     const userIndex = comment.likes.indexOf(req.user.id);
@@ -98,7 +97,7 @@ export const getComments = async (req, res, next) => {
      //cuando recién buscamos este es 0, pero como establecimos el limite en 9, la segunda vez que busquemos, va a ignorar los primeros 9 (porque ya se estan mostrando en la pagina) y va a empezar a buscar desde el 10
      const startIndex = parseInt(req.query.startIndex) || 0;
      //limit es la cantidad de posts que se van a buscar (por eso startIndex es importante, porque si no se establece, siempre se va a buscar desde el principio y se van a mostrar los mismos posts una y otra vez)
-     const limit = parseInt(req.query.limit) || 8;
+     const limit = parseInt(req.query.limit) || 16;
      //sortDirection es un número que indica si los posts se van a mostrar en orden ascendente o descendente
      const sortDirection = req.query.order === "asc" ? 1 : -1;
      // if (req.params.length < 1 || req.body.length < 1 || req.query.length <1) return;
