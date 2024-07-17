@@ -37,7 +37,8 @@ const app = express();
 
 // middleware que permite que el server acepte peticiones solo del front
 app.use(cors({
-  origin: 'https://gasteac.com/'
+  origin: 'https://postit-gasteac.vercel.app',
+  credentials: true
 }));
 
 //middleware que permite parsear JSON del backend a lenguaje usable (string) y manipulable (objeto u string) en el frontend
